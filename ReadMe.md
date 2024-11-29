@@ -6,7 +6,7 @@
 3. Go to "http://localhost/phpmyadmin"
 4. Create a database named `gymnsb`
 5. Click import and select the sql file in the `database-file` folder
-6. Go to "http://localhost/[ PROJECT_FOLDER_NAME ]/"
+6. Go to "http://localhost/[ PROJECT_FOLDER_NAME ]/". Replace with the actual name of your project folder. 
 
 ## Login information
 
