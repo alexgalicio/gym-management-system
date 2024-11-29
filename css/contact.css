@@ -1,0 +1,224 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #161616;
+    color: white;
+}
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    box-shadow: 0px 0px 5px black;
+    background-color: #161616;
+}
+
+.brand{
+    text-decoration: none;
+    font-weight: 1000;
+    color: white;
+    display: none;
+}
+
+header span{
+    color: #dc542a;
+}
+
+.link-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+.link{
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: 300ms;
+}
+
+.link:hover, .link:active{
+    color: #dc542a;
+}
+
+.btn-login{
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    background: none;
+    border: 2px solid #dc542a;
+    padding: 5px 10px;
+    transition: 300ms;
+}
+
+.btn-login:hover, .btn-login:active{
+    background: #dc542a;
+}
+
+main{
+    margin-top: 50px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    height: 100%;
+}
+
+.right{
+    background-color: #dc542a;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    width: 90%;
+}
+
+.right form{
+    display: flex;
+    flex-direction: column;
+    background-color: beige;
+    padding: 20px;
+    border-radius: 10px;
+    height: 100%;
+    gap: 10px;
+}
+
+.right form label{
+    color: #161616;
+}
+
+.right form input{
+    border: 2px solid #dc542a;
+    padding: 5px;
+    background-color: rgb(245, 218, 179);
+    outline: none;
+}
+
+.right form button{
+    border: none;
+    background-color: #dc542a;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 300ms;
+}
+
+.right form button:hover{
+    opacity: 0.8;
+}
+
+.right .message{
+    padding-bottom: 60px;
+}
+
+.left{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: white;
+    background-color: black;
+    padding: 20px;
+    justify-content: space-evenly;
+    width: 90%;
+}
+
+.left h1{
+    font-size: 2.5rem;    
+}
+
+.detail{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.detail i{
+    font-size: 20px;
+    display: none;
+}
+
+.background-img-vertical{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.1;
+    width: 100%;
+    height: 100%;
+}
+
+.background-img-wide{
+    display: none;
+}
+
+
+
+
+
+@media (width > 768px){
+    header{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .brand{
+        text-decoration: none;
+        font-weight: 1000;
+        color: white;
+        display: block;
+        font-size: 2rem;
+    }
+
+    .link-container{
+        gap: 40px;
+    }
+
+    main{
+        flex-direction: row;
+        align-items: center;
+        height: 90vh;
+    }
+
+    .background-img-wide{
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        opacity: 0.1;
+        width: 100%;
+        height: 100%;
+    }
+
+    .background-img-vertical{
+        display: none;
+    }
+}
+
+@media (width > 600px){
+    
+    .detail i{
+        display: block;
+        font-size: 30px;
+    }
+}
