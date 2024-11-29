@@ -7,6 +7,10 @@ require 'http/phpmailer/src/Exception.php';
 require 'http/phpmailer/src/PHPMailer.php';
 require 'http/phpmailer/src/SMTP.php';
 
+// fitness infinity gmail
+// email: fitnessinfinity081@gmail.com
+// password: f!tness!nf!n!ty
+// app password: yevd uzff ckec jpop
 
 $mail = new PHPMailer(true);
 

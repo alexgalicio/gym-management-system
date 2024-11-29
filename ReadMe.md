@@ -1,16 +1,16 @@
-how to run
+# Gym Management System
 
+## How to run
+1. Download and unzip the project
+2. Paste the extracted project on the `htdocs` folder
+3. Go to "http://localhost/phpmyadmin"
+4. Create a database named `gymnsb`
+5. Click import and select the sql file in the `database-file` folder
+6. Go to "http://localhost/[ PROJECT_FOLDER_NAME ]/"
 
+## Login information
 
-//Admin login
-username: admin
-password: admin
-
-//User login
-username: user
-password: user1234
-
-// fitness infinity gmail
-email: fitnessinfinity081@gmail.com
-password: f!tness!nf!n!ty
-app password: yevd uzff ckec jpop
+|  Role  | Username     | Password   |
+|--------|--------------|------------|
+| Admin  | admin   | admin   |
+| User   | user    | user1234    |
