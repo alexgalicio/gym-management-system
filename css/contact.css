@@ -74,6 +74,23 @@ main{
     height: 100%;
 }
 
+.row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-around;
+    gap: 30px;
+    padding: 1em;
+}
+
+.col {
+    flex: 1 1 100%;
+    max-width: 100%;
+    padding: 0.5em;
+    box-sizing: border-box;
+}
+
 .right{
     background-color: #dc542a;
     padding: 20px;
@@ -165,10 +182,6 @@ main{
     display: none;
 }
 
-
-
-
-
 @media (width > 768px){
     header{
         position: fixed;
@@ -197,6 +210,10 @@ main{
         flex-direction: row;
         align-items: center;
         height: 90vh;
+    }
+
+    .col {
+        flex: 1 1 45%;
     }
 
     .background-img-wide{
