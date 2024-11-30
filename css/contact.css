@@ -91,14 +91,24 @@ main{
     box-sizing: border-box;
 }
 
-.right{
-    background-color: #dc542a;
-    padding: 20px;
+.left, .right {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    justify-content: center;
     width: 90%;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.right{
+    background-color: #dc542a;
+    justify-content: center;
+}
+
+.left{
+    color: white;
+    background-color: black;
+    justify-content: space-evenly;
 }
 
 .right form{
@@ -117,6 +127,7 @@ main{
 
 .right form input{
     border: 2px solid #dc542a;
+    border-radius: 4px;
     padding: 5px;
     background-color: rgb(245, 218, 179);
     outline: none;
@@ -127,7 +138,7 @@ main{
     background-color: #dc542a;
     padding: 10px;
     margin-top: 20px;
-    border-radius: 10px;
+    border-radius: 4px;
     color: #fff;
     font-weight: bold;
     cursor: pointer;
@@ -140,17 +151,6 @@ main{
 
 .right .message{
     padding-bottom: 60px;
-}
-
-.left{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    color: white;
-    background-color: black;
-    padding: 20px;
-    justify-content: space-evenly;
-    width: 90%;
 }
 
 .left h1{
