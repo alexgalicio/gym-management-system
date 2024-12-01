@@ -5,9 +5,9 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'http/phpmailer/src/Exception.php';
-require 'http/phpmailer/src/PHPMailer.php';
-require 'http/phpmailer/src/SMTP.php';
+require '../others/phpmailer/src/Exception.php';
+require '../others/phpmailer/src/PHPMailer.php';
+require '../others/phpmailer/src/SMTP.php';
 
 include 'dbcon.php';
 

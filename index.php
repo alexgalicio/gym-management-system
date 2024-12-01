@@ -13,9 +13,9 @@
 
         <div class="link-container">
             <a href="index.php" class="link">Home</a>
-            <a href="about.php" class="link">About</a>
-            <a href="contact.php" class="link">Contact</a>
-            <a href="login.php" class="btn-login">Log In</a>
+            <a href="pages/about.php" class="link">About</a>
+            <a href="pages/contact.php" class="link">Contact</a>
+            <a href="pages/login.php" class="btn-login">Log In</a>
         </div>
     </header>
 
@@ -24,7 +24,7 @@
         <img src="img/gym-background-wide.jpg" alt="" class="background-img-wide">
 
         <h1> UNLIMITED <span>POTENTIAL</span>, <br> ENDLESS <span>GAINS</span></h1>
-        <a href="member/register.php">Become a member</a>
+        <a href="pages/member/register.php">Become a member</a>
 
     </main>
     
