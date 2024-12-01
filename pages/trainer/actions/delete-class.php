@@ -39,7 +39,6 @@ if (isset($_GET['id'])) {
             mysqli_roll_back($con);
             echo "ERROR: " . $e->getMessage();
         }
-
     }
 }
 ?>

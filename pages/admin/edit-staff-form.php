@@ -84,9 +84,9 @@ if (!isset($_SESSION['user_id'])) {
                         <option value="Trainer" <?php if ($row['designation'] == 'Trainer')
                           echo 'selected'; ?>>Trainer
                         </option>
-                        <option value="GYM Assistant" <?php if ($row['designation'] == 'GYM Assistant')
+                        <option value="Gym Assistant" <?php if ($row['designation'] == 'Gym Assistant')
                           echo 'selected'; ?>>
-                          GYM Assistant</option>
+                          Gym Assistant</option>
                         <option value="Front Desk Staff" <?php if ($row['designation'] == 'Front Desk Staff')
                           echo 'selected'; ?>>Front Desk Staff</option>
                         <option value="Manager" <?php if ($row['designation'] == 'Manager')

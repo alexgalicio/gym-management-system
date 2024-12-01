@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 <html lang="en">
 
 <head>
-  <title>Fitness Infinity Gym Admin</title>
+  <title>Fitness Infinity</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../css/bootstrap.min.css" />
@@ -24,20 +24,20 @@ if (!isset($_SESSION['user_id'])) {
 
 <body>
   <div id="header">
-    <h1><a href="dashboard.html">Fitness Infinity Gym Admin</a></h1>
+    <h1><a href="dashboard.html">Fitness Infinity</a></h1>
   </div>
 
   <?php include 'includes/topheader.php' ?>
 
-  <?php $page = "promo-offers";
+  <?php $page = "classes";
   include 'includes/sidebar.php' ?>
 
   <div id="content">
     <div id="content-header">
       <div id="breadcrumb"> <a href="index.php" title="Go to Home" class="tip-bottom"><i class="fas fa-home"></i>
-          Home</a> <a href="promo-offers.php" class="tip-bottom">Promo & Offers</a> <a href="#" class="current">Enrolled
+          Home</a> <a href="classes.php" class="tip-bottom">Classes</a> <a href="#" class="current">Enrolled
           Members</a> </div>
-      <h1 class="text-center">Promo & Offers Members</h1>
+      <h1 class="text-center">Enrolled Members List</h1>
     </div>
 
     <div class="container-fluid">
@@ -45,7 +45,7 @@ if (!isset($_SESSION['user_id'])) {
         <div class="span12">
           <div class='widget-box widget-box-bordered'>
             <div class='widget-title'> <span class='icon'> <i class='fas fa-ad'></i> </span>
-              <h5>Promo & Offers</h5>
+              <h5>Class</h5>
 
             </div>
 
@@ -55,28 +55,34 @@ if (!isset($_SESSION['user_id'])) {
 
               $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
-              $class_query = "SELECT * FROM offers WHERE id = $id";
+              $class_query = "SELECT *,
+                                          DATE_FORMAT(start_time, '%l:%i %p') AS start_time_formatted, 
+                            DATE_FORMAT(end_time, '%l:%i %p') AS end_time_formatted  FROM classes WHERE id = $id";
 
               $result = mysqli_query($con, $class_query);
               $row = mysqli_fetch_array($result);
               echo "<table class='table table-bordered table-hover'>
               <thead>
                   <tr>
-                      <th>Name</th>
-                      <th>Amount</th>
-                      <th>Duration</th>
-                      <th>Type</th>
-                      <th>Description</th>
+                                <th>Class Name</th>
+                                <th>Start Time</th>
+                                <th>End Time</th>
+                                <th>Date</th>
+                                <th>Enrolled</th>
+                                <th>Capacity</th>
+                                <th>Amount</th>
                   </tr>
               </thead>
 
               <tbody>
                   <tr>
-                      <td><div class='text-center'>" . $row['name'] . "</div></td>
-                      <td><div class='text-center'>" . $row['amount'] . "</div></td>
-                      <td><div class='text-center'>" . $row['duration'] . "</div></td>
-                      <td><div class='text-center'>" . $row['type'] . "</div></td>
-                      <td><div class='text-center'>" . $row['description'] . "</div></td>
+                                <td><div class='text-center'>" . $row['classname'] . "</div></td>
+                                <td><div class='text-center'>" . $row['start_time_formatted'] . "</div></td>
+                                <td><div class='text-center'>" . $row['end_time_formatted'] . "</div></td>
+                                <td><div class='text-center'>" . $row['date'] . "</div></td>
+                                <td><div class='text-center'>" . $row['enrolled'] . "</div></td>
+                                <td><div class='text-center'>" . $row['capacity'] . "</div></td>
+                                <td><div class='text-center'>PHP " . $row['amount'] . "</div></td>
                   </tr>
               </tbody>
             </table>";
@@ -101,8 +107,8 @@ if (!isset($_SESSION['user_id'])) {
 
               $qry = "SELECT DISTINCT m.* 
               FROM members m 
-              INNER JOIN user_offers uo ON m.user_id = uo.user_id
-              WHERE uo.offer_id = $id";
+              INNER JOIN user_class uc ON m.user_id = uc.user_id
+              WHERE uc.class_id = $id";
 
               $result1 = mysqli_query($con, $qry);
 
@@ -110,11 +116,12 @@ if (!isset($_SESSION['user_id'])) {
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Full Name</th>
-                    <th>Gender</th>
-                    <th>Contact Number</th>
-                    <th>Email</th>
-                    <th>Type</th>
+                  <th>Full Name</th>
+                  <th>Gender</th>
+                  <th>Contact Number</th>
+                  <th>Email</th>
+                  <th>Address</th>
+                  <th>Type</th>
                 </tr>
             </thead>";
 
@@ -122,17 +129,18 @@ if (!isset($_SESSION['user_id'])) {
               while ($row = mysqli_fetch_array($result1)) {
                 echo "<tbody> 
         <td><div class='text-center'>" . $cnt . "</div></td>
-        <td><div class='text-center'>" . $row['fullname'] . "</div></td>
-        <td><div class='text-center'>" . $row['gender'] . "</div></td>
-        <td><div class='text-center'>" . $row['contact'] . "</div></td>
-        <td><div class='text-center'>" . $row['email'] . "</div></td>
-        <td><div class='text-center'>" . $row['type'] . "</div></td>
+                <td><div class='text-center'>" . $row['fullname'] . "</div></td>
+                <td><div class='text-center'>" . $row['gender'] . "</div></td>
+                <td><div class='text-center'>" . $row['contact'] . "</div></td>
+                <td><div class='text-center'>" . $row['email'] . "</div></td>
+                <td><div class='text-center'>" . $row['address'] . "</div></td>
+                <td><div class='text-center'>" . $row['type'] . "</div></td>
     </tbody>";
                 $cnt++;
               }
 
               if (mysqli_num_rows($result1) == 0) {
-                echo "<tr><td colspan='7'><div class='text-center'>No members in this promo & offers</div></td></tr>";
+                echo "<tr><td colspan='7'><div class='text-center'>No members in this class</div></td></tr>";
               }
 
               echo "</table>";

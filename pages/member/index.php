@@ -65,7 +65,7 @@ $result1 = mysqli_query($con, $qry);
                 <tr>
                   <td class='taskDesc'><a href='to-do.php'><i class='fas fa-circle-plus'></i></a>" . $row['task_desc'] . "</td>
                   <td class='taskStatus'><span class='in-progress'>" . $row['task_status'] . "</span></td>
-                  <td class='taskOptions'><a href='update-todo.php?id=" . $row['id'] . "' class='tip-top' data-original-title='Update'><i class='fas fa-pen-to-square'></i></a>  <a href='actions/remove-todo.php?id=" . $row['id'] . "' class='tip-top' data-original-title='Done'><i class='fas fa-check'></i></a></td>
+                  <td class='taskOptions'><a href='update-todo.php?id=" . $row['id'] . "' class='tip-top' data-original-title='Edit'><i class='fas fa-pen-to-square'></i></a>  <a href='actions/remove-todo.php?id=" . $row['id'] . "' class='tip-top' data-original-title='Done'><i class='fas fa-check'></i></a></td>
                 </tr>
               </tbody>";
               }
@@ -80,8 +80,6 @@ $result1 = mysqli_query($con, $qry);
             <div class="widget-title"><span class="icon"><i class="fas fa-users"></i></span>
               <h5>Gym's Capacity</h5>
             </div>
-
-
             <div class="widget-content">
               <div class="todo">
 

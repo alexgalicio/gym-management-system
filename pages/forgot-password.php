@@ -1,5 +1,5 @@
 <?php session_start();
-include('dbcon.php'); ?>
+include 'dbcon.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +31,7 @@ include('dbcon.php'); ?>
                 </div>
 
                 <div class="submit">
-                    <button class="login" type="submit" name="forgot-password">Send</button>
+                    <button class="login" name="forgot-password">Send</button>
                 </div>
 
                 <?php
@@ -65,18 +65,15 @@ include('dbcon.php'); ?>
 
                         END;
 
-                        $mail->send();
-
                         try {
                             $mail->send();
+                            echo "<span class='warning-message'>If an account exists for $email, 
+                            we'll send an email with instructions on how to reset your password..</span>";
                         } catch (Exception $e) {
                             echo "<span class='error-message'>Message could not be sent. Mailer error: {$mail->ErrorInfo}</span>";
                         }
 
                     }
-
-                    echo "<span class='warning-message'>If an account exists for $email, 
-                    we'll send an email with instructions on how to reset your password..</span>";
                 }
                 ?>
 

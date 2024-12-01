@@ -3,13 +3,15 @@ session_start();
 if (!isset($_SESSION['user_id'])) {
     header('location:../../index.php');
 }
+
+$id = $_SESSION['user_id'];
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Fitness Infinity Gym Admin</title>
+    <title>Fitness Infinity</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../css/bootstrap.min.css" />
@@ -24,7 +26,7 @@ if (!isset($_SESSION['user_id'])) {
 
 <body>
     <div id="header">
-        <h1><a href="dashboard.html">Fitness Infinity Gym Admin</a></h1>
+        <h1><a href="dashboard.html">Fitness Infinity</a></h1>
     </div>
 
     <?php include 'includes/topheader.php' ?>
@@ -56,52 +58,54 @@ if (!isset($_SESSION['user_id'])) {
                         <div class='widget-content nopadding'>
                             <?php
                             include "dbcon.php";
-                            $qry = "SELECT c.*, 
-                                    s.fullname AS trainer_name, 
-                                    DATE_FORMAT(c.start_time, '%l:%i %p') AS start_time_formatted, 
-                                    DATE_FORMAT(c.end_time, '%l:%i %p') AS end_time_formatted 
-                                    FROM classes c
-                                    LEFT JOIN staffs s ON c.trainer = s.user_id";
-                            $cnt = 1;
+
+
+                            $qry = "select *,
+                            DATE_FORMAT(start_time, '%l:%i %p') AS start_time_formatted, 
+                            DATE_FORMAT(end_time, '%l:%i %p') AS end_time_formatted 
+                            from classes where trainer = $id ";
+                         
                             $result = mysqli_query($con, $qry);
+
                             echo "<table class='table table-bordered table-hover'>
                             <thead>
                                 <tr>
                                 <th>#</th>
                                 <th>Class Name</th>
-                                <th>Trainer</th>
                                 <th>Start Time</th>
                                 <th>End Time</th>
                                 <th>Date</th>
                                 <th>Enrolled</th>
                                 <th>Capacity</th>
                                 <th>Amount</th>
-                                <th>Book</th>
                                 <th>Actions</th>
                                 </tr>
                             </thead>";
+                            if (mysqli_num_rows($result) == 0) {
+                                echo "<tr><td colspan='9'><div class='text-center'>You do not have any classes scheduled yet</div></td></tr>";
 
-                            while ($row = mysqli_fetch_array($result)) {
-                                echo "<tbody> 
-                                <td><div class='text-center'>" . $cnt . "</div></td>
-                                <td><div class='text-center'>" . $row['classname'] . "</div></td>
-                                <td><div class='text-center'>" . $row['trainer_name'] . "</div></td>
-                                <td><div class='text-center'>" . $row['start_time_formatted'] . "</div></td>
-                                <td><div class='text-center'>" . $row['end_time_formatted'] . "</div></td>
-                                <td><div class='text-center'>" . $row['date'] . "</div></td>
-                                <td><div class='text-center'>" . $row['enrolled'] . "</div></td>
-                                <td><div class='text-center'>" . $row['capacity'] . "</div></td>
-                                <td><div class='text-center'>PHP " . $row['amount'] . "</div></td>
-                                <td><div class='text-center'>
-                                    <a href='book-class.php?id=" . $row['id'] . "'><button class='btn btn-primary btn'></i> Book</button></a></div>
-                                </td>
-                                <td><div class='text-center'>
-                                    <a href='edit-class.php?id=" . $row['id'] . "' title='Edit' class='tip-bottom'><i class='fas fa-edit' style='color:#367E18'></i> | </a>
-                                    <a href='actions/delete-class.php?id=" . $row['id'] . "' title='Delete' class='tip-bottom' style='color:#f74d4d;'><i class='fas fa-trash'></i></a>
-                                </div></td>
-                            </tbody>";
-                                $cnt++;
+                            } else {
+                                $cnt = 1;
+                                while ($row = mysqli_fetch_array($result)) {
+                                    echo "<tbody> 
+                                    <td><div class='text-center'>" . $cnt . "</div></td>
+                                    <td><div class='text-center'>" . $row['classname'] . "</div></td>
+                                    <td><div class='text-center'>" . $row['start_time_formatted'] . "</div></td>
+                                    <td><div class='text-center'>" . $row['end_time_formatted'] . "</div></td>
+                                    <td><div class='text-center'>" . $row['date'] . "</div></td>
+                                    <td><div class='text-center'>" . $row['enrolled'] . "</div></td>
+                                    <td><div class='text-center'>" . $row['capacity'] . "</div></td>
+                                    <td><div class='text-center'>PHP " . $row['amount'] . "</div></td>
+                                    <td><div class='text-center'>
+                                        <a href='view-class.php?id=" . $row['id'] . "' title='View' class='tip-bottom'><i class='fas fa-eye' style='color:#FF9A00''></i> | </a>
+                                        <a href='edit-class.php?id=" . $row['id'] . "' title='Edit' class='tip-bottom'><i class='fas fa-edit' style='color:#367E18'></i> | </a>
+                                        <a href='actions/delete-class.php?id=" . $row['id'] . "' title='Delete' class='tip-bottom' style='color:#f74d4d;'><i class='fas fa-trash'></i></a>
+                                    </div></td>
+                                </tbody>";
+                                    $cnt++;
+                                }
                             }
+
                             ?>
                             </table>
                         </div>

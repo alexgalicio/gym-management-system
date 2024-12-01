@@ -59,7 +59,7 @@ if (!isset($_SESSION['user_id'])) {
                     <table class="table-no-hover">
                       <tbody>
                         <tr class="no-hover">
-                          <td><img src="../img/fitness-infinity-logo.png" alt="Gym Logo" style="border-radius: 4px"
+                          <td><img src="../../img/fitness-infinity-logo.png" alt="Gym Logo" style="border-radius: 4px"
                               width="175"></td>
                         </tr>
                         <tr class="no-hover">

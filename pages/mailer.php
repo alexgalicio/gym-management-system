@@ -15,7 +15,7 @@ $mail->isSMTP();
 $mail->SMTPAuth = true;
 $mail->Host = 'smtp.gmail.com';
 $mail->Username = 'fitnessinfinity081@gmail.com';
-$mail->Password = 'fxzt zoum abho sjwf';
+$mail->Password = 'dflf qlwz uuaz pktv';
 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
 $mail->Port = 587;
 

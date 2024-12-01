@@ -5,18 +5,18 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require '../others/phpmailer/src/Exception.php';
-require '../others/phpmailer/src/PHPMailer.php';
-require '../others/phpmailer/src/SMTP.php';
+require 'others/phpmailer/src/Exception.php';
+require 'others/phpmailer/src/PHPMailer.php';
+require 'others/phpmailer/src/SMTP.php';
 
-include 'dbcon.php';
+include 'pages/dbcon.php';
 
 $mail = new PHPMailer(true);
 $mail->isSMTP();
 $mail->Host = 'smtp.gmail.com';
 $mail->SMTPAuth = true;
 $mail->Username = 'fitnessinfinity081@gmail.com';
-$mail->Password = 'fxzt zoum abho sjwf';
+$mail->Password = 'dflf qlwz uuaz pktv';
 $mail->SMTPSecure = 'ssl';
 $mail->Port = 465;
 

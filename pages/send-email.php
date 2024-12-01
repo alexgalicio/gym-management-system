@@ -2,6 +2,7 @@
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
 
 require '../others/phpmailer/src/Exception.php';
 require '../others/phpmailer/src/PHPMailer.php';
@@ -10,7 +11,7 @@ require '../others/phpmailer/src/SMTP.php';
 // fitness infinity gmail
 // email: fitnessinfinity081@gmail.com
 // password: f!tness!nf!n!ty
-// app password: yevd uzff ckec jpop
+// app password: dflf qlwz uuaz pktv
 
 $mail = new PHPMailer(true);
 
@@ -18,8 +19,8 @@ $mail->isSMTP();
 $mail->Host = 'smtp.gmail.com';
 $mail->SMTPAuth = true;
 $mail->Username = 'fitnessinfinity081@gmail.com';
-$mail->Password = 'fxzt zoum abho sjwf';
-$mail->SMTPSecure = 'ssl';
+$mail->Password = 'dflf qlwz uuaz pktv';
+$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
 $mail->Port = 465;
 
 $mail->setFrom('fitnessinfinity081@gmail.com');

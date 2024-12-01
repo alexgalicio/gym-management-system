@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 <html lang="en">
 
 <head>
-    <title>Fitness Infinity Gym Admin</title>
+    <title>Fitness Infinity</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../css/bootstrap.min.css" />
@@ -24,7 +24,7 @@ if (!isset($_SESSION['user_id'])) {
 
 <body>
     <div id="header">
-        <h1><a href="dashboard.html">Fitness Infinity Gym Admin</a></h1>
+        <h1><a href="dashboard.html">Fitness Infinity</a></h1>
     </div>
 
     <?php include 'includes/topheader.php' ?>
@@ -57,27 +57,9 @@ if (!isset($_SESSION['user_id'])) {
                                 <div class="control-group">
                                     <label class="control-label">Class Name :</label>
                                     <div class="controls">
+                                    <input type="hidden" name="trainer" value="<?php echo $_SESSION['user_id']; ?>">
                                         <input type="text" class="span11" name="classname" placeholder="Class Name"
                                             minlength="3" required />
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label">Trainer :</label>
-                                    <div class="controls">
-                                        <select name="trainer" class="span11" required="required" id="select" required>
-                                            <?php
-                                            $sql = "SELECT user_id, fullname FROM staffs WHERE designation = 'Trainer'";
-                                            $result = $con->query($sql);
-
-                                            if ($result->num_rows > 0) {
-                                                while ($row = $result->fetch_assoc()) {
-                                                    echo "<option value='" . $row['user_id'] . "'>" . $row['fullname'] . "</option>";
-                                                }
-                                            } else {
-                                                echo "<option value=''>No trainers available</option>";
-                                            }
-                                            ?>
-                                        </select>
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -90,7 +72,7 @@ if (!isset($_SESSION['user_id'])) {
                                 <div class="control-group">
                                     <label class="control-label">Amount :</label>
                                     <div class="controls">
-                                        <input type="number" class="span11" name="amount" step="0.01" min="0" placeholder="0"
+                                        <input type="number" class="span11" name="amount" step="0.01" min="0"
                                             required />
                                     </div>
                                 </div>

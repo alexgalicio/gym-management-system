@@ -22,6 +22,7 @@ include('dbcon.php'); ?>
 
         <div class="form-container">
             <form id="loginform" method="POST" action="#" class="form">
+
                 <div class="form-greet">
                     <h2>Hello Again!</h2>
                     <h3>Welcome back</h3>
@@ -51,6 +52,7 @@ include('dbcon.php'); ?>
 
                     $password = md5($password);
 
+                    // admin
                     $query_admin = mysqli_query($con, "SELECT * FROM admin WHERE  password='$password' and username='$username'");
                     $row_admin = mysqli_fetch_array($query_admin);
                     $num_row_admin = mysqli_num_rows($query_admin);
@@ -61,6 +63,7 @@ include('dbcon.php'); ?>
 
                     }
 
+                    // user
                     $query_user = mysqli_query($con, "SELECT * FROM members WHERE  password='$password' and username='$username'");
                     $row_user = mysqli_fetch_array($query_user);
                     $num_row_user = mysqli_num_rows($query_user);
@@ -68,6 +71,16 @@ include('dbcon.php'); ?>
                     if ($num_row_user > 0) {
                         $_SESSION['user_id'] = $row_user['user_id'];
                         header('location:member/index.php');
+                    }
+
+                    // trainer
+                    $query_trainer = mysqli_query($con, "SELECT * FROM staffs WHERE password='$password' and username='$username'");
+                    $row_trainer = mysqli_fetch_array($query_trainer);
+                    $num_row_trainer = mysqli_num_rows($query_trainer);
+
+                    if ($num_row_trainer > 0) {
+                        $_SESSION['user_id'] = $row_trainer['user_id'];
+                        header('location:trainer/index.php');
                     }
 
                     echo "<div class='alert-error' role='alert'>

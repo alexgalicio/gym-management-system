@@ -128,8 +128,8 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="controls">
                       <div class="input-append">
                         <span class="add-on">PHP</span>
-                        <input type="number" min="0" step="0.01" name="amount" value='<?php echo $row['amount']; ?>'
-                          class="span11" required>
+                        <input type="number" min="0" step="0.01" name="amount"
+                          value='<?php echo $row['amount'] / $row['quantity']; ?>' class="span11" required>
                       </div>
                     </div>
                   </div>

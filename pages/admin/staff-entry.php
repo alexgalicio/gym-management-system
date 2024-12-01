@@ -72,7 +72,7 @@ if (!isset($_SESSION['user_id'])) {
                                         <select name="designation" id="designation" class="span11">
                                             <option value="Cashier">Cashier</option>
                                             <option value="Trainer">Trainer</option>
-                                            <option value="GYM Assistant">GYM Assistant</option>
+                                            <option value="Gym Assistant">Gym Assistant</option>
                                             <option value="Front Desk Staff">Front Desk Staff</option>
                                             <option value="Manager">Manager</option>
                                         </select>

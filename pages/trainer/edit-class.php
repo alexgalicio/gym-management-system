@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 <html lang="en">
 
 <head>
-	<title>Fitness Infinity Gym Admin</title>
+	<title>Fitness Infinity</title>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="stylesheet" href="../../css/bootstrap.min.css" />
@@ -24,7 +24,7 @@ if (!isset($_SESSION['user_id'])) {
 
 <body>
 	<div id="header">
-		<h1><a href="dashboard.html">Fitness Infinity Gym Admin</a></h1>
+		<h1><a href="dashboard.html">Fitness Infinity</a></h1>
 	</div>
 
 	<?php include 'includes/topheader.php' ?>
@@ -63,26 +63,6 @@ if (!isset($_SESSION['user_id'])) {
 										<div class="controls">
 											<input type="text" class="span11" name="classname" minlength="3" required
 												value='<?php echo $row['classname']; ?>' />
-										</div>
-									</div>
-									<div class="control-group">
-										<label class="control-label">Trainer :</label>
-										<div class="controls">
-											<select name="trainer" class="span11" required="required" id="select">
-												<?php
-												$sql = "SELECT user_id, fullname FROM staffs WHERE designation = 'Trainer'";
-												$result1 = $con->query($sql);
-
-												if ($result1->num_rows > 0) {
-													while ($row1 = $result1->fetch_assoc()) {
-														$selected = ($row1['user_id'] == $selectedTrainer) ? "selected" : "";
-														echo "<option value='" . $row1['user_id'] . "' $selected>" . $row1['fullname'] . "</option>";
-													}
-												} else {
-													echo "<option value=''>No trainers available</option>";
-												}
-												?>
-											</select>
 										</div>
 									</div>
 									<div class="control-group">
