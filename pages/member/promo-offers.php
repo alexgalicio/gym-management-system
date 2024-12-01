@@ -42,10 +42,8 @@ if (!isset($_SESSION['user_id'])) {
                     Home</a> <a href="promo-offers.php" class="current">Promo & Offers</a> </div>
         </div>
         <div class="container-fluid">
-
             <div class="row-fluid">
                 <div class="span12">
-
                     <div class='widget-box widget-box-bordered'>
                         <div class='widget-title'> <span class='icon'> <i class='fas fa-rectangle-ad'></i> </span>
                             <h5>My Promo & Offers</h5>
@@ -60,21 +58,20 @@ if (!isset($_SESSION['user_id'])) {
                             $result = mysqli_query($con, $qry);
 
                             echo "<table class='table table-bordered table-hover'>
-                            <thead>
-                                <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Amount</th>
-                                <th>Description</th>
-                                <th>Next Payment</th>
-                                <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>";
+                                    <thead>
+                                        <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Amount</th>
+                                        <th>Description</th>
+                                        <th>Next Payment</th>
+                                        <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>";
                             if (mysqli_num_rows($result) > 0) {
 
                                 while ($row = mysqli_fetch_array($result)) {
-
                                     $enrollment_date = new DateTime();
                                     $duration_days = $row['duration'];
                                     $next_payment_date = clone $enrollment_date;
@@ -86,31 +83,31 @@ if (!isset($_SESSION['user_id'])) {
                                     $next_payment_display = $remaining_days > 0 ? $next_payment_date->format('F d, Y') : 'Paid';
 
                                     echo "
-                            <td><div class='text-center'>" . $cnt . "</div></td>
-                            <td><div class='text-center'>" . $row['name'] . "</div></td>
-                            <td><div class='text-center'>PHP " . $row['amount'] . "</div></td>
-                            <td><div class='text-center'>" . $row['description'] . "</div></td>
-                            <td><div class='text-center'>" . $next_payment_display . "</div></td>
-                            <td><div class='text-center'>";
+                                        <td><div class='text-center'>" . $cnt . "</div></td>
+                                        <td><div class='text-center'>" . $row['name'] . "</div></td>
+                                        <td><div class='text-center'>PHP " . $row['amount'] . "</div></td>
+                                        <td><div class='text-center'>" . $row['description'] . "</div></td>
+                                        <td><div class='text-center'>" . $next_payment_display . "</div></td>
+                                        <td><div class='text-center'>";
 
-                                    if ($remaining_days <= 1) {
-                                        echo "<button type='button' class='btn btn-info' disabled> Paid</button>";
-                                    } else {
-                                        echo "
-                                <form action='../../others/controllers/payment-controller.php' method='POST'>
-                                    <input type='hidden' name='user_id' value='" . $user_id . "'>
-                                    <input type='hidden' name='offer_id' value='" . $row['id'] . "'>
-                                    <input type='hidden' name='amount' value='" . $row['amount'] . "'>
-                                    <input type='hidden' name='description' value='Membership payment for " . $user_id . "'>
-                                    <input type='hidden' name='url' value='pay-offers'>
-                                    <button type='submit' class='btn btn-info'>
-                                        <i class='fas fa-g'></i> Renew
-                                    </button>
-                                </form>";
-                                    }
-
+                                                if ($remaining_days <= 1) {
+                                                    echo "<button type='button' class='btn btn-info' disabled> Paid</button>";
+                                                } else {
+                                                    echo "
+                                            <form action='../../others/controllers/payment-controller.php' method='POST'>
+                                            <input type='hidden' name='class_id' value=''>
+                                                <input type='hidden' name='user_id' value='" . $user_id . "'>
+                                                <input type='hidden' name='offer_id' value='" . $row['id'] . "'>
+                                                <input type='hidden' name='amount' value='" . $row['amount'] . "'>
+                                                <input type='hidden' name='description' value='Membership payment for " . $user_id . "'>
+                                                <input type='hidden' name='url' value='pay-offers'>
+                                                <button type='submit' class='btn btn-info'>
+                                                    <i class='fas fa-g'></i> Renew
+                                                </button>
+                                            </form>";
+                                                }
                                     echo " </div></td>
-                        </tbody>";
+                                    </tbody>";
                                     $cnt++;
                                 }
 
@@ -134,13 +131,11 @@ if (!isset($_SESSION['user_id'])) {
                     <div class='widget-box widget-box-bordered'>
                         <div class='widget-title'> <span class='icon'> <i class='fas fa-rectangle-ad'></i> </span>
                             <h5>Available Promo & Offers</h5>
-
                         </div>
                         <div class='widget-content nopadding'>
 
                             <?php
                             include "dbcon.php";
-
                             $user_qry = "SELECT * FROM members WHERE user_id = '$user_id'";
                             $user_result = mysqli_query($con, $user_qry);
                             $user_row = mysqli_fetch_assoc($user_result);
@@ -148,7 +143,6 @@ if (!isset($_SESSION['user_id'])) {
                             $user_status = $user_row['status'];
 
                             $qry1 = "select * from offers";
-
                             $result1 = mysqli_query($con, $qry1);
 
                             echo "<table class='table table-bordered table-hover'>
@@ -162,13 +156,11 @@ if (!isset($_SESSION['user_id'])) {
                                 </tr>
                             </thead>";
 
-
                             $cnt = 1;
                             while ($row = mysqli_fetch_array($result1)) {
                                 $allowed_types = $row['type'];
                                 $is_allowed = empty($allowed_types) || in_array($member_type, explode(',', $allowed_types));
                                 $is_regular = strpos($allowed_types, 'Regular') !== false;
-
 
                                 echo "<tbody> 
                             <td><div class='text-center'>" . $cnt . "</div></td>
@@ -179,26 +171,26 @@ if (!isset($_SESSION['user_id'])) {
                             <td><div class='text-center'>";
                                 if ($user_status === 'Pending' && $is_regular) {
                                     echo "<button type='button' class='btn btn-secondary tip-bottom' disabled 
-                title='Your membership is pending. Regular offers are unavailable for pending payment.'>
-                Not Eligible
-              </button>";
+                                title='Your membership is pending. Regular offers are unavailable for pending payment.'>
+                                Not Eligible
+                            </button>";
                                 } else if ($is_allowed) {
                                     echo "
-                                            <form action='../../others/controllers/payment-controller.php' method='POST'>
-                                                <input type='hidden' name='user_id' value='" . $user_id . "'>
-                                                <input type='hidden' name='offer_id' value='" . $row['id'] . "'>
-                                                <input type='hidden' name='amount' value='" . $row['amount'] . "'>
-                                                <input type='hidden' name='url' value='pay-offers'>
-                                                <input type='hidden' name='description' value='Membership payment for " . $user_id . "'>
-                                                <button type='submit' class='btn btn-info btn'>
-                                                    <i class='fas fa-g'></i> Pay
-                                                </button>
-                                            </form>";
+                                    <form action='../../others/controllers/payment-controller.php' method='POST'>
+                                            <input type='hidden' name='class_id' value=''>
+                                        <input type='hidden' name='user_id' value='" . $user_id . "'>
+                                        <input type='hidden' name='offer_id' value='" . $row['id'] . "'>
+                                        <input type='hidden' name='amount' value='" . $row['amount'] . "'>
+                                        <input type='hidden' name='url' value='pay-offers'>
+                                        <input type='hidden' name='description' value='Membership payment for " . $user_id . "'>
+                                        <button type='submit' class='btn btn-info btn'>
+                                            <i class='fas fa-g'></i> Pay
+                                        </button>
+                                    </form>";
 
                                 } else {
                                     echo "<button type='button' class='btn btn-secondary' disabled>Not Eligible</button>";
                                 }
-
                                 echo "</div></td></tbody>";
                                 $cnt++;
                             }

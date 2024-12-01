@@ -23,10 +23,6 @@ include('dbcon.php'); ?>
         <div class="form-container">
             <form id="loginform" method="POST" action="#" class="form">
                 <div class="form-greet">
-
-                <?php
-                echo md5('user');
-                ?>
                     <h2>Hello Again!</h2>
                     <h3>Welcome back</h3>
                 </div>

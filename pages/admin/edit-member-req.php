@@ -29,13 +29,13 @@ if (!isset($_SESSION['user_id'])) {
 
   <?php include 'includes/topheader.php' ?>
 
-  <?php $page = 'members-update';
+  <?php $page = 'manage-members';
   include 'includes/sidebar.php' ?>
 
   <div id="content">
     <div id="content-header">
       <div id="breadcrumb"> <a href="index.php" title="Go to Home" class="tip-bottom"><i class="fas fa-home"></i>
-          Home</a> <a href="members.php" class="tip-bottom">Members</a> <a href="#" class="current">Add Members</a>
+          Home</a> <a href="members.php" class="tip-bottom">Members</a> <a href="#" class="current">Edit Members</a>
       </div>
     </div>
     <form role="form" action="index.php" method="POST">

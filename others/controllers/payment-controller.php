@@ -8,8 +8,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $description = $_POST['description'];
     $url = $_POST['url'];
     $offerId = $_POST['offer_id'];
+    $classId = $_POST['class_id'];
 
     $_SESSION['offer_id'] = $offerId;
+    $_SESSION['class_id'] = $classId;
 
     $currDate = date('Y-m-d');
     $sql_transaction = "INSERT INTO transaction_history (user_id, amount, date)
@@ -62,11 +64,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $decoded = json_decode($response, true);
 
 //debug
-//echo "<pre>";
-//print_r($decoded);
-//echo "</pre>";
+// echo "<pre>";
+// print_r($decoded);
+// echo "</pre>";
 
-//echo "<pre>";
+// echo "<pre>";
 // print_r($_POST);
 // echo "</pre>";
 // exit();
