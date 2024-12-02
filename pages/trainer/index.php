@@ -47,22 +47,27 @@ $id = $_SESSION['user_id'];
             <div class="quick-actions_homepage">
                 <ul class="quick-actions">
 
-                    <li class="span6 widget-box-bordered" style="border-radius: 10px;"></i> <a href="#"
-                            style="font-size: 16px;"><i class="fas fa-users"></i>
+                    <li class="span3 widget-box-bordered"></i> <a href="classes.php" style="font-size: 16px;"><i
+                                class="fas fa-users"></i>
                             <strong><?php include 'actions/count-clients.php'; ?></strong><small>Total
                                 Clients</small>
                         </a>
                     </li>
-                    <li class="span6 widget-box-bordered" style="border-radius: 10px;"></i> <a href="#"
-                            style="font-size: 16px;"><i class="fas fa-chalkboard-user"></i>
+                    <li class="span3 widget-box-bordered"></i> <a href="classes.php" style="font-size: 16px;"><i
+                                class="fas fa-chalkboard-user"></i>
                             <strong><?php include 'actions/count-classes.php'; ?></strong><small>Total Classes</small>
                         </a>
+                    </li>
+                    <li class=" span3"></i> <a href="equipment.php" style="font-size: 16px;"><i
+                                class="fas fa-dumbbell"></i>
+                            <strong><?php include 'actions/count-equipments.php'; ?></strong><small>Available
+                                Equipments</small> </a>
                     </li>
                 </ul>
             </div>
 
             <div class="row-fluid">
-                <div class="span12">
+                <div class="span6">
                     <div class="widget-box widget-box-bordered">
                         <div class="widget-title"> <span class="icon"><i class="fas fa-pencil"></i></span>
                             <h5>My To-Do List</h5>
@@ -95,23 +100,50 @@ $id = $_SESSION['user_id'];
                         </div>
                     </div>
                 </div>
+                <div class="span6">
+                    <div class="widget-box widget-box-bordered">
+                        <div class="widget-title"> <span class="icon"><i class="fas fa-wrench"></i></span>
+                            <h5>Equipment Status</h5>
+                        </div>
+                        <div class="widget-content">
+                            <div class="todo">
+                                <ul>
+                                    <?php
+                                    include "dbcon.php";
+                                    $qry = "SELECT * FROM equipment WHERE status IN ('Maintenance', 'Repair Needed')";
+                                    $result = mysqli_query($con, $qry);
 
+                                    while ($row = mysqli_fetch_array($result)) { ?>
+                                        <li class='clearfix'>
+                                            <div class='txt'> <?php echo $row["name"] ?>
+                                                <?php if ($row["status"] == "Maintenance") {
+                                                    echo '<span class="by label label-warning">Maintenance</span>';
+                                                } else if ($row["status"] == "Repair Needed") {
+                                                    echo '<span class="by label label-important">Repair needed</span>';
+                                                } ?>
+                                            </div>
+                                        <?php }
+                                    echo "</li>";
+                                    echo "</ul>";
+                                    ?>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
 
             </div>
 
             <div class="row-fluid">
                 <div class="span12">
                     <div class="widget-box widget-box-bordered">
-                        <div class="widget-title"><span class="icon"><i
-                                    class="fas fa-bullhorn"></i></span>
+                        <div class="widget-title"><span class="icon"><i class="fas fa-bullhorn"></i></span>
                             <h5>Gym Announcement</h5>
                         </div>
                         <div class="widget-content nopadding">
                             <ul class="recent-posts">
                                 <li>
-
                                     <?php
-
                                     include "dbcon.php";
                                     $qry = "select * from announcements";
                                     $result = mysqli_query($con, $qry);
@@ -121,7 +153,6 @@ $id = $_SESSION['user_id'];
                                         echo "<div class='article-post'>";
                                         echo "<span class='user-info'> By: System Administrator / Date: " . $row['date'] . " </span>";
                                         echo "<p>" . $row['message'] . "</p>";
-
                                     }
 
                                     echo "</div>";

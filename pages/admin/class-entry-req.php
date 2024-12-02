@@ -69,7 +69,7 @@ if (!isset($_SESSION['user_id'])) {
                     echo "<h1 style='color:maroon;'>Error</h1>";
                     echo "<h3>Oops! Something went wrong while processing your request.</h3>";
                     echo "<p>We couldn't find the page you were looking for, or there was an issue with the details you entered.</p>";
-                    echo "<a class='btn btn-warning btn-big'  href='edit-member.php'>Go Back</a> </div>";
+                    echo "<a class='btn btn-warning btn-big'  href='classes.php'>Go Back</a> </div>";
                     echo "</div>";
                     echo "</div>";
                     echo "</div>";
