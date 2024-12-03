@@ -80,6 +80,7 @@ if (!isset($_SESSION['user_id'])) {
                                             <form action='../../others/controllers/payment-controller.php' method='POST'>
                                                 <input type='hidden' name='user_id' value='" . $row['user_id'] . "'>
                                                 <input type='hidden' name='offer_id' value=''>
+                                                <input type='hidden' name='class_id' value=''>
                                                 <input type='hidden' name='amount' value='300'>
                                                 <input type='hidden' name='url' value='pay-membership'>
                                                 <input type='hidden' name='description' value='Membership payment for " . $row['user_id'] . "'>
@@ -132,6 +133,7 @@ if (!isset($_SESSION['user_id'])) {
                                                 <input type='hidden' name='user_id' value='" . $row['user_id'] . "'>
                                                 <input type='hidden' name='amount' value='" . $row['amount'] . "'>
                                                 <input type='hidden' name='offer_id' value=''>
+                                                 <input type='hidden' name='class_id' value=''>
                                                 <input type='hidden' name='url' value='pay-membership'>
                                                 <input type='hidden' name='description' value='Membership payment for " . $row['user_id'] . "'>
                                                 <button type='submit' class='btn btn-info btn' " . ($diff > 7 ? 'disabled' : '') . ">
