@@ -10,7 +10,7 @@
 </head>
 <body>
     <header>
-        <a href="index.php" class="brand">FITNESS <span>INFINITY</span></a>
+        <a href="../index.php" class="brand">FITNESS <span>INFINITY</span></a>
 
         <div class="link-container">
             <a href="../index.php" class="link">Home</a>
