@@ -1,4 +1,14 @@
 # Gym Management System
+This is a web application for Fitness Infinity, designed to help manage gym operations efficiently.
+
+## **Screenshots**
+
+### **Landing Page**
+![Landing Page](https://github.com/alexgalicio/gym-management-system/blob/master/img/screenshot_1.png)
+
+### **Dashboard Page**
+![Dashboard Page](https://github.com/alexgalicio/gym-management-system/blob/master/img/screenshot_2.png)
+
 
 ## How to run
 1. Install XAMPP (if you don't have it installed)
